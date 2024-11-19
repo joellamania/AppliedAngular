@@ -13,6 +13,7 @@ import { Title } from '@angular/platform-browser';
   selector: 'app-nav-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  providers: [Title],
   imports: [NavLinkComponent],
   template: `
     <div class="navbar bg-base-100">
@@ -45,7 +46,12 @@ export class NavBarComponent implements OnInit {
       path: 'home',
     },
     {
-      text: 'About',
+      text: 'Gift Planning',
+      path: 'gifts',
+      featureGated: 'gift-giving',
+    },
+    {
+      text: 'About Us',
       path: 'about',
     },
   ]);
