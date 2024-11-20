@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 
-const dev_features = ['gift-giving', ''];
+const dev_features = ['gift-giving', 'noblocking'];
 
 const handlers = [
   http.get('http://api.company.com/features/api/features', () => {

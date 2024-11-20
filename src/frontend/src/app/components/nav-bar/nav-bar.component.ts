@@ -49,7 +49,7 @@ export class NavBarComponent implements OnInit {
     {
       text: 'Home',
       path: 'home',
-      featureGated: '',
+      featureGated: 'noblocking',
     },
     {
       text: 'Gift Planning',
@@ -59,7 +59,7 @@ export class NavBarComponent implements OnInit {
     {
       text: 'About Us',
       path: 'about',
-      featureGated: '',
+      featureGated: 'no-blocking',
     },
   ]);
 }
