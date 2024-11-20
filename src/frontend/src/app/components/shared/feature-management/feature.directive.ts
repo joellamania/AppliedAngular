@@ -17,7 +17,7 @@ import { FeaturesService } from './feature.service';
 })
 export class FeatureDirective implements OnInit, OnDestroy {
   private viewContainerRef = inject(ViewContainerRef);
-  private templateRef = inject<TemplateRef<unknown>>(TemplateRef<unknown>);
+  private templateRef = inject<TemplateRef<any>>(TemplateRef<any>);
   private featureService = inject(FeaturesService);
   private subscription?: Subscription;
 

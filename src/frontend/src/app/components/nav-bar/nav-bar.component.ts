@@ -8,13 +8,14 @@ import {
 import { NavLinkComponent } from './components/nav-link.component';
 import { NaviLinkModel } from './types';
 import { Title } from '@angular/platform-browser';
+import { FeatureDirective } from '../shared/feature-management/feature.directive';
 
 @Component({
   selector: 'app-nav-bar',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   providers: [Title],
-  imports: [NavLinkComponent],
+  imports: [NavLinkComponent, FeatureDirective],
   template: `
     <div class="navbar bg-base-100">
       <div class="flex-1">{{ this.siteName() }}</div>
@@ -22,7 +23,11 @@ import { Title } from '@angular/platform-browser';
         <ul class="menu menu-horizontal px-1">
           @for (link of links(); track link.text) {
             <li>
-              <app-link [link]="link" (navigated)="onNavigation($event)" />
+              <app-link
+                [link]="link"
+                *feature="link.featureGated"
+                (navigated)="onNavigation($event)"
+              />
             </li>
           }
         </ul>
@@ -44,6 +49,7 @@ export class NavBarComponent implements OnInit {
     {
       text: 'Home',
       path: 'home',
+      featureGated: '',
     },
     {
       text: 'Gift Planning',
@@ -53,6 +59,7 @@ export class NavBarComponent implements OnInit {
     {
       text: 'About Us',
       path: 'about',
+      featureGated: '',
     },
   ]);
 }
