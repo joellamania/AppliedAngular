@@ -9,9 +9,11 @@ import {
 } from '@ngrx/signals';
 import { COUNTER_STEPS, CounterSteps } from './types';
 import { computed } from '@angular/core';
+import { withDevtools } from '@angular-architects/ngrx-toolkit';
 
 let storedCount = parseInt(localStorage.getItem('count') ?? '0') ?? 0;
 export const CounterPrefStore = signalStore(
+  withDevtools('counter'),
   withState({
     step: 1,
     count: storedCount,
